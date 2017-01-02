@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="person" class="com.source.Person" factory-bean="personfactory"
+		factory-method="createPerson" destroy-method="onDestroy" init-method="onCreate">
+		<constructor-arg name="id" type="int" value="1"></constructor-arg>
+		<constructor-arg name="name" type="String" value="shiva praneeth">
+		</constructor-arg>
+		<property name="taxId" value="1"></property>
+		<property name="address" ref="address"></property>
+	</bean>
+
+	<bean id="person2" class="com.source.Person" factory-bean="personfactory"
+		factory-method="createPerson" destroy-method="onDestroy" init-method="onCreate">
+		<constructor-arg name="id" type="int" value="2"></constructor-arg>
+		<constructor-arg name="name" type="String" value="sharada">
+		</constructor-arg>
+		<property name="taxId" value="2"></property>
+		<property name="address" ref="address"></property>
+	</bean>
+
+	<bean id="address" class="com.source.Address" p:address="23 williams road"
+		p:zipCode="77340">
+	</bean>
+	<bean id="personfactory" class="com.source.PersonFactory"></bean>
+</beans>

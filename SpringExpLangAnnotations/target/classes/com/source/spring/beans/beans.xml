@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="person" class="com.source.spring.Person">
+		<property name="persons">
+			<list>
+				<value>Siva</value>
+				<value>Kaladhar</value>
+				<value>Manohar</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="robot" class="com.source.spring.Robot">
+		<constructor-arg name="id" value="#{person.getRandom().length()}"></constructor-arg>
+		<constructor-arg name="name" value="#{person.getRandom()}"></constructor-arg>
+	</bean>
+</beans>

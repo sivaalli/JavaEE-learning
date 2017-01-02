@@ -1,0 +1,49 @@
+@CHARSET "ISO-8859-1";
+
+
+.formTable{
+	width: 400px;
+	padding: 10px;
+	border: 1px solid black;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+input[type=text]{
+	width: 250px;
+}
+
+textarea{
+	width: 250px;
+	height: 300px;
+}
+.label{
+	text-align: right;
+	vertical-align: top;
+}
+.error{
+	font-size: small;
+	color: red;
+}
+#offers{
+	padding:10px;
+	border: 1px solid black;
+    box-shadow: 5px 5px 5px #888888;
+    width:60%;
+    border-collapse: collapse;
+}
+th, td {
+   border: 1px solid black;
+   padding:5px;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+p .error{
+	font-size: medium;
+}
+.valid {
+	font-size: small;
+	color: green;
+}
+
