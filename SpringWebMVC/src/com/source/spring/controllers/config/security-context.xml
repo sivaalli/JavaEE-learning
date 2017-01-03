@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
 	<security:authentication-manager>
+		<!-- <security:authentication-provider> <security:user-service> <security:user 
+			name="shiva" authorities="admin" password="admin" /> </security:user-service> 
+			</security:authentication-provider> -->
 		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="shiva" authorities="admin"
-					password="admin" />
-			</security:user-service>
-		</security:authentication-provider>
-		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="dataSource"
-				authorities-by-username-query='select * from authorities where binary username=?'
+			<security:jdbc-user-service
+				data-source-ref="dataSource" authorities-by-username-query='select * from authorities where binary username=?'
 				users-by-username-query="select * from users where binary username=?"
 				id="jdbcUsersService" />
+			<security:password-encoder ref="passwordEncoder"></security:password-encoder>
 		</security:authentication-provider>
 	</security:authentication-manager>
-	<security:http>
+	<security:http servlet-api-provision="false">
 		<security:intercept-url pattern="/adminpage"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/docreate"
@@ -47,10 +46,15 @@
 		<security:logout logout-success-url="/loggedout" />
 		<security:access-denied-handler
 			error-page="/denied" />
-		
+
 		<security:remember-me key="offersAppKey"
 			user-service-ref="jdbcUsersService" />
 	</security:http>
 	<security:global-method-security
 		secured-annotations="enabled"></security:global-method-security>
+	
+	<bean
+		class="org.springframework.security.crypto.password.StandardPasswordEncoder"
+		id="passwordEncoder">
+	</bean>
 </beans>
