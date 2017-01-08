@@ -1,0 +1,1 @@
+<p>Account created. <a href="${pageContext.request.contextPath}/loginform">click here to go back to login page</a>

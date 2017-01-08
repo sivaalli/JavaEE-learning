@@ -9,10 +9,14 @@ public class Logger {
 	//since annotation auto wires using type we can have any name for setter methods. Just type should match
 		@Autowired
 		private ConsoleWriter consoleWriter;
-		@Autowired
+		
 		private LogWriter logWriter;
-
 	
+		@Autowired
+		public void setLogWriter2312(LogWriter logWriter) {
+			this.logWriter = logWriter;
+		}
+
 		public void writeConsoleWriter(){
 			consoleWriter.write();
 		}

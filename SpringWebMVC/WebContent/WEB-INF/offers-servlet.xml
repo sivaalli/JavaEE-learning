@@ -31,7 +31,7 @@
 	</property>
 	</bean>
 
-	<tx:annotation-driven />
+	
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 	</bean>
@@ -43,4 +43,7 @@
 		</list>
 	</property>
 	</bean>
+	
+
+	<tx:annotation-driven />
 </beans>

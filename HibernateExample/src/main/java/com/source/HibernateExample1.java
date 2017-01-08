@@ -20,7 +20,6 @@ public static void main(String[] args) {
     //std.setStudentName("manohar");
     
     session.beginTransaction();
-    
     session.save(std);
    // session.update(std);
     //session.delete(std);

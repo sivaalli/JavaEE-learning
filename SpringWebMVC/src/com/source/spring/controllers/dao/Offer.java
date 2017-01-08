@@ -1,60 +1,79 @@
 package com.source.spring.controllers.dao;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import com.source.spring.controllers.validation.ValidEmail;
+import org.springframework.transaction.annotation.Transactional;
 
+@Entity
+@Table(name="offers")
 public class Offer {
 	
+	@Id
+	@GeneratedValue
 	private int id;
 	
-	@Size(min=5, max=50)
+	//not using any more
+/*	@Size(min=5, max=50)
 	private String name;
 	
 	@NotNull
 	//@Pattern(regexp=".*\\@.*\\..*", message="Not a valid email address")
 	@ValidEmail(min=6)
-	private String email;
+	private String email;*/
 	
+	
+	@ManyToOne
+	@JoinColumn(name="username")
+	private User user;
+	
+
 	@Size(min=5, max=50)
 	private String text;
 	
 	public Offer(){
-		
+		this.user = new User();
 	}
-	public Offer(String name, String email, String text) {
-		this.name = name;
-		this.email = email;
+	
+	public Offer(User user, String text) {
+		this.user=user;
 		this.text = text;
 	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 	public String getText() {
 		return text;
 	}
 	public void setText(String text) {
 		this.text = text;
 	}
+	
+	public String getUsername(){
+		return user.getUsername();
+	}
 	@Override
 	public String toString() {
-		return "Offer [id=" + id + ", name=" + name + ", email=" + email + ", text=" + text + "]";
+		return "Offer [user=" + user + ", text=" + text + "]";
 	}
+	
 	
 }

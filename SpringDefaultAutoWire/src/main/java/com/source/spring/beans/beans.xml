@@ -2,23 +2,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
-	default-autowire="byType" default-autowire-candidates="*Writer">
+	default-autowire="byName">
 
 
 	<bean id="logger" class="com.source.spring.Logger" autowire="constructor">
 	</bean>
-	
+
 	<bean id="logWriter" class="com.source.spring.LogWriter">
 		<property name="message" value="This is Log Writer"></property>
 	</bean>
-
-	<bean id="consoleWriter" class="com.source.spring.ConsoleWriter">
-		<property name="message" value="This is Console Writer"></property>
+	
+	<bean id="consoleSquirrel" class="com.source.spring.ConsoleWriter">
+		<property name="message" value="This is squirell Console Writer"></property>
 	</bean>
 
-	<bean id="squirrel" class="com.source.spring.ConsoleWriter">
+ 	<bean id="consoleWriter" class="com.source.spring.ConsoleWriter">
 		<property name="message" value="This is Console Writer"></property>
-	</bean>
+	</bean> 
+
+
 
 
 </beans>

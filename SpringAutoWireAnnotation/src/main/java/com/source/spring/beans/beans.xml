@@ -13,7 +13,7 @@
 		<property name="message" value="This is Log Writer"></property>
 	</bean>
 
-	<bean id="consoleWriter" class="com.source.spring.ConsoleWriter">
+	<bean id="consoleWriter1" class="com.source.spring.ConsoleWriter">
 		<property name="message" value="This is Console Writer"></property>
 	</bean>
 

@@ -1,5 +1,6 @@
 package com.source.spring.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -55,7 +56,7 @@ public class OffersController {
 	}
 	
 	@RequestMapping(value="/docreate", method=RequestMethod.POST)
-	public String doCreate(Model model,@Valid Offer offer, BindingResult result){
+	public String doCreate(Model model,@Valid Offer offer, BindingResult result,Principal principal){
 		if(result.hasErrors()){
 			/*System.out.println("Form has error");
 			List<ObjectError> errors = result.getAllErrors();
@@ -64,6 +65,12 @@ public class OffersController {
 			}*/
 			return "createoffer"; 
 		}
+		
+		String username = principal.getName();//returns the name of user logged in
+		System.out.println("username is :"+username);
+		
+		offer.getUser().setUsername(username);
+		
 		offersService.createOffer(offer);
 		//System.out.println(offer);
 		return "offercreated";

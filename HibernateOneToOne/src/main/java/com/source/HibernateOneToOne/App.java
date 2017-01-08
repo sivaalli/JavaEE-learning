@@ -29,7 +29,7 @@ public class App
        // session.save(std);
        // session.update(std);
     	session.save(student1);
-    	
+
         //session.delete(std);
         session.getTransaction().commit();
         session.close();

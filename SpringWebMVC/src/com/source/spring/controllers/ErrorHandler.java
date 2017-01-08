@@ -10,11 +10,13 @@ public class ErrorHandler {
 
 	@ExceptionHandler(DataAccessException.class)
 	public String handleDataAccessException(DataAccessException e) {
+		System.out.println(e.getMessage());
 		return "error";
 	}
 	
 	@ExceptionHandler(AccessDeniedException.class)
 	public String handleAccessDeniedException(AccessDeniedException e) {
+		System.out.println(e.getMessage());
 		return "denied";
 	}
 }
